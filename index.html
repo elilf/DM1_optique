@@ -75,7 +75,8 @@
 		/* --- Typographie --- */
 		h1,
 		h2,
-		h3 {
+		h3,
+		h4 {
 			font-family: 'Montserrat', sans-serif;
 			font-weight: 700;
 		}
@@ -243,6 +244,86 @@
 			font-size: 1.2rem;
 		}
 
+		/* --- Frise Chronologique (Timeline) --- */
+		.timeline {
+			position: relative;
+			margin: 3rem 0 4rem 1rem;
+			padding-left: 2rem;
+			border-left: 2px solid #e2e8f0;
+		}
+
+		.timeline-item {
+			position: relative;
+			margin-bottom: 3rem;
+			opacity: 0;
+			transform: translateX(-20px);
+			transition: all 0.6s ease-out;
+		}
+
+		.timeline-item.is-visible {
+			opacity: 1;
+			transform: translateX(0);
+		}
+
+		.timeline-item::before {
+			content: '';
+			position: absolute;
+			left: -39px;
+			top: 5px;
+			width: 16px;
+			height: 16px;
+			border-radius: 50%;
+			background: var(--bg-site);
+			border: 4px solid var(--secondary-blue);
+			box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+			transition: all 0.3s ease;
+		}
+
+		.timeline-item:hover::before {
+			background: var(--secondary-blue);
+			transform: scale(1.2);
+		}
+
+		.timeline-date {
+			font-family: 'Space Mono', monospace;
+			color: var(--secondary-blue);
+			font-weight: bold;
+			font-size: 1.1rem;
+			margin-bottom: 0.2rem;
+			display: block;
+		}
+
+		.timeline-title {
+			font-size: 1.25rem;
+			font-weight: 600;
+			color: var(--primary-blue);
+			margin-bottom: 0.5rem;
+		}
+
+		.timeline-content {
+			color: #334155;
+			font-size: 1.05rem;
+			line-height: 1.7;
+		}
+
+		.tech-badge {
+			display: inline-block;
+			background: #f8fafc;
+			color: #0f172a;
+			padding: 6px 12px;
+			border-radius: 6px;
+			font-size: 0.9rem;
+			font-weight: 600;
+			margin-top: 0.8rem;
+			border: 1px solid #cbd5e1;
+			font-family: 'Open Sans', sans-serif;
+		}
+
+		.tech-badge span {
+			color: var(--science-gold);
+			margin-right: 5px;
+		}
+
 		/* --- Images avec fond Papier Millimétré (Blueprint) et Effet Lentille --- */
 		.visual-element {
 			display: flex;
@@ -339,6 +420,61 @@
 	</header>
 
 	<main>
+
+		<section id="histoire">
+			<h2 class="animate-text">Fresque Chronologique</h2>
+			<p>Retraçons les repères historiques qui ont marqué le développement des instruments optiques, depuis les
+				premières lunettes jusqu'aux télescopes spatiaux de pointe, en mettant en évidence leurs optimisations
+				successives.</p>
+
+			<div class="timeline">
+				<div class="timeline-item">
+					<span class="timeline-date">1609</span>
+					<h4 class="timeline-title">La Lunette de Galilée (Repère Historique)</h4>
+					<p class="timeline-content">Galilée perfectionne l'instrument en associant un objectif convergent et un
+						oculaire divergent. Il est le premier à l'utiliser scientifiquement pour l'observation astronomique.</p>
+					<div class="tech-badge"><span>✦</span> Optimisation : Grossissement x30 et conservation d'une image droite.
+					</div>
+				</div>
+
+				<div class="timeline-item">
+					<span class="timeline-date">1611</span>
+					<h4 class="timeline-title">La Lunette Astronomique (Kepler)</h4>
+					<p class="timeline-content">Johannes Kepler remplace l'oculaire divergent par une lentille convergente. Bien
+						que l'image devienne renversée, il crée le premier système afocal réellement performant.</p>
+					<div class="tech-badge"><span>✦</span> Optimisation : Élargissement drastique du champ de vision pour
+						l'astronomie.</div>
+				</div>
+
+				<div class="timeline-item">
+					<span class="timeline-date">1668</span>
+					<h4 class="timeline-title">Le Télescope Réflecteur (Newton)</h4>
+					<p class="timeline-content">Isaac Newton invente le télescope en remplaçant la lentille primaire (objectif)
+						par un miroir concave (système catoptrique).</p>
+					<div class="tech-badge"><span>✦</span> Optimisation : Suppression totale de l'aberration chromatique inhérente
+						au verre.</div>
+				</div>
+
+				<div class="timeline-item">
+					<span class="timeline-date">Technologie de pointe</span>
+					<h4 class="timeline-title">Optique Adaptative & Miroirs Segmentés</h4>
+					<p class="timeline-content">Les télescopes terrestres modernes (comme l'ELT) utilisent des miroirs géants
+						constitués de centaines de segments hexagonaux et déforment leur surface en temps réel par ordinateur.</p>
+					<div class="tech-badge"><span>✦</span> Adaptation : Correction instantanée des turbulences atmosphériques.
+					</div>
+				</div>
+
+				<div class="timeline-item">
+					<span class="timeline-date">Ère Spatiale</span>
+					<h4 class="timeline-title">Les Géants de l'Espace (Hubble, JWST)</h4>
+					<p class="timeline-content">Placés en orbite ou au point de Lagrange, ces instruments intègrent des capteurs
+						infrarouges ultra-sensibles refroidis cryogéniquement.</p>
+					<div class="tech-badge"><span>✦</span> Adaptation : S'affranchir du filtre de l'atmosphère terrestre pour
+						l'observation du ciel profond.</div>
+				</div>
+			</div>
+		</section>
+
 		<section id="introduction">
 			<h2 class="animate-text">Utilité et Fonctionnement<span class="hidden-cite"></span></h2>
 
@@ -495,8 +631,8 @@
 		document.addEventListener("DOMContentLoaded", () => {
 			wrapTextInLetters();
 
-			// Observers indépendants pour l'apparition au scroll
-			const observerElements = document.querySelectorAll('section, h1.animate-text, h2.animate-text, h3.animate-text');
+			// On ajoute .timeline-item à l'Observer pour animer la frise chronologique
+			const observerElements = document.querySelectorAll('section, h1.animate-text, h2.animate-text, h3.animate-text, .timeline-item');
 			const observer = new IntersectionObserver((entries) => {
 				entries.forEach(entry => {
 					if (entry.isIntersecting) {
@@ -515,7 +651,7 @@
 			}, 100);
 		});
 
-		// 3. Système de particules "Burst Radial" (Base non-interactive à la souris)
+		// 3. Système de particules "Burst Radial"
 		const canvas = document.getElementById('particleCanvas');
 		const ctx = canvas.getContext('2d');
 
@@ -544,7 +680,7 @@
 
 				let angleDeg = this.angle * (180 / Math.PI);
 				let r, g, b;
-				// Dégradé de couleurs scientifiques : Bleu optique, Violet UV, Orange chaud
+
 				if (angleDeg > -90 && angleDeg <= 90) {
 					r = Math.floor(Math.random() * 100 + 50);
 					g = Math.floor(Math.random() * 100 + 100);
