@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>DM d'Optique : Lunettes et Télescopes</title>
 	<link
-		href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&family=Lora:ital@1&display=swap"
+		href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&family=Lora:ital@1&display=swap"
 		rel="stylesheet">
 	<style>
 		:root {
@@ -120,6 +120,7 @@
 		/* --- Style Scientifique pour les formules (Façon LaTeX) --- */
 		.formula {
 			font-family: 'Lora', serif;
+			/* Police à empattement pour les maths */
 			font-style: italic;
 			background-color: #f8fafc;
 			padding: 2px 8px;
@@ -127,8 +128,6 @@
 			color: #0f172a;
 			font-size: 1.15em;
 			border-bottom: 1px solid #cbd5e1;
-			display: inline-block;
-			margin: 0.2rem 0;
 		}
 
 		/* --- En-tête (Header) --- */
@@ -197,9 +196,11 @@
 		main {
 			max-width: 900px;
 			margin: -2rem auto 4rem auto;
+			/* Remonte légèrement sur le header */
 			padding: 4rem 3rem;
 			background: rgba(255, 255, 255, 0.8);
 			backdrop-filter: blur(12px);
+			/* Effet verre sur le fond principal */
 			border-radius: 16px;
 			box-shadow: 0 10px 40px rgba(0, 0, 0, 0.02);
 			position: relative;
@@ -235,6 +236,7 @@
 
 		ul li::before {
 			content: '\25B8';
+			/* Petit triangle géométrique */
 			position: absolute;
 			left: 0;
 			top: 2px;
@@ -304,6 +306,52 @@
 			line-height: 1.7;
 		}
 
+		/* --- Styles pour les images de la frise chronologique (Cadres et mise en page spécifique) --- */
+		.timeline-image-container {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin: 1.5rem 0;
+			/* Espacement autour de l'image */
+			padding: 1.5rem;
+			/* Rembourrage intérieur */
+			border-radius: 8px;
+			/* Coins arrondis du cadre */
+			border: 1px solid #e2e8f0;
+			/* Bordure fine */
+			/* Background quadrillage millimétré (rappel scientifique) */
+			background-color: #ffffff;
+			background-image:
+				linear-gradient(var(--grid-color) 1px, transparent 1px),
+				linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+			background-size: 15px 15px;
+			/* Quadrillage plus fin */
+			box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+			/* Ombre douce */
+			transition: all 0.4s ease;
+			/* Transition fluide au survol */
+		}
+
+		.timeline-image-container img {
+			max-width: 100%;
+			/* S'adapte à la largeur du cadre */
+			height: auto;
+			/* Conserve les proportions */
+			border-radius: 4px;
+			/* Coins arrondis de l'image */
+			box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+			/* Ombre sous l'image */
+		}
+
+		.timeline-image-container:hover {
+			transform: translateY(-5px);
+			/* Élève le cadre au survol */
+			box-shadow: 0 8px 20px rgba(59, 130, 246, 0.1);
+			/* Ombre plus forte et bleutée */
+			border-color: var(--secondary-blue);
+			/* Change la couleur de la bordure */
+		}
+
 		.tech-badge {
 			display: inline-block;
 			background: #f8fafc;
@@ -331,6 +379,7 @@
 			padding: 3rem 2rem;
 			border-radius: 12px;
 			border: 1px solid #e2e8f0;
+			/* Background quadrillage millimétré */
 			background-color: #ffffff;
 			background-image:
 				linear-gradient(var(--grid-color) 1px, transparent 1px),
@@ -350,8 +399,10 @@
 			transition: all 0.5s ease;
 		}
 
+		/* Effet "Aberration Chromatique" au survol des images */
 		.visual-element:hover img {
 			transform: translateY(-5px) scale(1.02);
+			/* Décalage rouge à gauche, bleu à droite, imitant un prisme */
 			box-shadow: -4px 5px 15px rgba(239, 68, 68, 0.15), 4px 5px 15px rgba(59, 130, 246, 0.15), 0 10px 20px rgba(0, 0, 0, 0.05);
 		}
 
@@ -359,6 +410,7 @@
 			text-align: center;
 			color: #64748b;
 			font-family: 'Lora', serif;
+			/* Font scientifique pour les légendes */
 			font-style: italic;
 			font-size: 0.95rem;
 			margin-top: -1.5rem;
@@ -374,6 +426,7 @@
 			border-radius: 8px;
 			overflow: hidden;
 			box-shadow: 0 0 0 1px #e2e8f0;
+			/* Bordure fine */
 		}
 
 		thead {
@@ -399,29 +452,6 @@
 		tbody tr:hover {
 			background-color: var(--light-blue);
 		}
-
-		/* --- Design spécifique pour l'Exercice --- */
-		.question {
-			font-weight: 600;
-			color: var(--primary-blue);
-			margin-top: 1.5rem;
-			margin-bottom: 0.5rem;
-		}
-
-		.solution-box {
-			background-color: #f8fafc;
-			border-left: 4px solid #10b981;
-			/* Vert émeraude pour la correction */
-			padding: 2rem;
-			border-radius: 0 8px 8px 0;
-			margin-top: 3rem;
-			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
-		}
-
-		.solution-box h3 {
-			color: #10b981;
-			margin-top: 0;
-		}
 	</style>
 </head>
 
@@ -430,7 +460,7 @@
 	<header>
 		<canvas id="particleCanvas"></canvas>
 		<div class="header-content">
-			<h1 class="animate-text">Optique : Lunettes & Télescopes</h1>
+			<h1 class="animate-text">Optique : Lunettes & Télescopes<span class="hidden-cite"></span></h1>
 			<p>Une exploration lumineuse des instruments célestes.</p>
 		</div>
 	</header>
@@ -447,6 +477,9 @@
 				<div class="timeline-item">
 					<span class="timeline-date">1609</span>
 					<h4 class="timeline-title">La Lunette de Galilée (Repère Historique)</h4>
+					<div class="timeline-image-container">
+						<img src="galilée.png" alt="Portrait de Galileo Galilei">
+					</div>
 					<p class="timeline-content">Galilée perfectionne l'instrument en associant un objectif convergent et un
 						oculaire divergent. Il est le premier à l'utiliser scientifiquement pour l'observation astronomique.</p>
 					<div class="tech-badge"><span>✦</span> Optimisation : Grossissement x30 et conservation d'une image droite.
@@ -456,6 +489,10 @@
 				<div class="timeline-item">
 					<span class="timeline-date">1611</span>
 					<h4 class="timeline-title">La Lunette Astronomique (Kepler)</h4>
+
+					<div class="timeline-image-container">
+						<img src="kepler.png" alt="Portrait de Johannes Kepler">
+					</div>
 					<p class="timeline-content">Johannes Kepler remplace l'oculaire divergent par une lentille convergente. Bien
 						que l'image devienne renversée, il crée le premier système afocal réellement performant.</p>
 					<div class="tech-badge"><span>✦</span> Optimisation : Élargissement drastique du champ de vision pour
@@ -472,103 +509,90 @@
 				</div>
 
 				<div class="timeline-item">
-					<span class="timeline-date">Technologie de pointe</span>
-					<h4 class="timeline-title">Optique Adaptative & Miroirs Segmentés</h4>
-					<p class="timeline-content">Les télescopes terrestres modernes (comme l'ELT) utilisent des miroirs géants
-						constitués de centaines de segments hexagonaux et déforment leur surface en temps réel par ordinateur.</p>
-					<div class="tech-badge"><span>✦</span> Adaptation : Correction instantanée des turbulences atmosphériques.
+					<span class="timeline-date">1990</span>
+					<h4 class="timeline-title">L'ère Spatiale (Hubble)</h4>
+					<div class="timeline-image-container">
+						<img src="hubble.jpg" alt="Télescope spatial Hubble en orbite">
 					</div>
+					<p class="timeline-content">L'humanité envoie un télescope en orbite terrestre basse (hors de notre
+						atmosphère). Il fonctionne dans le spectre visible, ultraviolet et proche infrarouge.</p>
+					<div class="tech-badge"><span>✦</span> Technologie de pointe : Suppression totale des perturbations
+						atmosphériques terrestres</div>
 				</div>
 
 				<div class="timeline-item">
-					<span class="timeline-date">Ère Spatiale</span>
-					<h4 class="timeline-title">Les Géants de l'Espace (Hubble, JWST)</h4>
-					<p class="timeline-content">Placés en orbite ou au point de Lagrange, ces instruments intègrent des capteurs
-						infrarouges ultra-sensibles refroidis cryogéniquement.</p>
-					<div class="tech-badge"><span>✦</span> Adaptation : S'affranchir du filtre de l'atmosphère terrestre pour
-						l'observation du ciel profond.</div>
+					<span class="timeline-date">Aujourd'hui</span>
+					<h4 class="timeline-title">Optique Adaptative & Miroirs Segmentés (JWST / ELT)</h4>
+					<div class="timeline-image-container">
+						<img src="espace.jpg" alt="Image du James Webb Space Telescope ou de l'exploration spatiale moderne">
+					</div>
+					<p class="timeline-content">L'ère moderne utilise des miroirs hexagonaux assemblés en nid d'abeille (comme le
+						James Webb) ou des miroirs déformables gérés par ordinateur en temps réel (pour les Extremely Large
+						Telescopes terrestres).</p>
+					<div class="tech-badge"><span>✦</span> Technologie de pointe : Correction active de la turbulence et
+						infrarouge lointain</div>
 				</div>
 			</div>
 		</section>
 
 		<section id="introduction">
-			<h2 class="animate-text">Utilité et Fonctionnement</span></h2>
+			<h2 class="animate-text">Utilité et Fonctionnement<span class="hidden-cite"></span></h2>
 
-			<h3 class="animate-text">Lunette astronomique</h3>
-			<p>La lunette astronomique est un instrument optique utilisé pour augmenter le diamètre apparent et la luminosité
-				apparente des objets situés à l’infini (comme les objets célestes, telles que les étoiles, planètes ou
-				galaxies). Cette lunette est constituée de deux lentilles convergentes
-				: un objectif de grande distance focale (qui collecte la lumière qui provient de l’objet observé) et d’un
-				oculaire de courte distance focale (qui permet de grossir l’image formée par l’objectif).</p>
+			<h3 class="animate-text">Lunette astronomique<span class="hidden-cite"></span></h3>
+			<p>La lunette astronomique augmente le diamètre et la luminosité apparente des objets situés à l’infini (étoiles,
+				planètes).<span class="hidden-cite"></span> Constituée de deux lentilles convergentes : un objectif de grande
+				distance focale (collecte) et un oculaire de courte focale (grossit).<span class="hidden-cite"></span></p>
 
 			<div class="visual-element">
 				<img src="Lunette_astronomique.png" alt="Schéma de la lunette astronomique">
 			</div>
 			<p class="visual-description">Figure 1 : Foyer objet de l'oculaire confondu avec le foyer image de
-				l'objectif.</p>
+				l'objectif.<span class="hidden-cite"></span></p>
 
 			<ul>
-				<li>Lorsque l’objet observé est situé à l’infini, l’image se forme dans le plan focal image.</li>
-				<li>La position de l’oculaire permet que le foyer objet soit confondu avec le foyer image de l’objectif, ainsi
-					l’image finale est située à l’infini.</li>
-				<li>L’image étant renversée, on peut utiliser un système de miroir ou une lentille intermédiaire pour redresser
-					l’image. On obtient alors une lunette terrestre.
+				<li>L'image se forme dans le plan focal image pour un objet à l'infini.<span class="hidden-cite"></span></li>
+				<li>L’image finale est rejetée à l’infini, observation sans fatigue.<span class="hidden-cite"></span></li>
+				<li>L’image étant renversée, on peut ajouter un redresseur (lunette terrestre).<span class="hidden-cite"></span>
 				</li>
 			</ul>
 
-			<h3 class="animate-text">Lunette de Galilée</h3>
-			<p>La lunette de Galilée (développée par Galileo Galilei) est une lunette terrestre utilisée, tout comme la
-				lunette astronomique, pour augmenter le diamètre apparent des objets situés à l’infini et la clarté des objets
-				sans diamètre apparent.</p>
+			<h3 class="animate-text">Lunette de Galilée<span class="hidden-cite"></span></h3>
+			<p>Développée par Galileo Galilei, elle augmente le diamètre apparent des objets à l'infini tout en fournissant
+				une image droite.<span class="hidden-cite"></span></p>
 
 			<div class="visual-element">
 				<img src="Lunette_Galilee.png" alt="Schéma de la lunette de Galilée">
 			</div>
-			<p class="visual-description">Figure 2 : Objectif convergent et oculaire divergent.
+			<p class="visual-description">Figure 2 : Objectif convergent et oculaire divergent.<span
+					class="hidden-cite"></span>
 			</p>
 
 			<ul>
-				<li>Cette lunette est constituée d’un objectif convergent de grande distance focale et d’un oculaire divergent
-					de courte distance focale.
+				<li>Objectif convergent (image réelle) et oculaire divergent (image virtuelle).<span class="hidden-cite"></span>
 				</li>
-				<li>L’objectif convergent permet de donner à un objet situé à l’infini une image réelle intermédiaire tandis que
-					l’oculaire divergent permet la formation d’une image virtuelle située à l’infini. Le système est alors afocal.
-				</li>
-				<li>Contrairement à la lunette astronomique, l’image est droite et vue sous un angle plus grand que
-					l’objet. Cependant le champ de vision est plus limité.</li>
+				<li>Le système est afocal.<span class="hidden-cite"></span></li>
+				<li>L'image est droite mais le champ de vision est plus limité.<span class="hidden-cite"></span></li>
 			</ul>
 
-			<h3 class="animate-text">Télescopes</h3>
-			<p>Le télescope a la même utilité que la lunette astronomique, c’est-à-dire observer des objets à l’infini en
-				augmentant leur diamètre apparent de façon non fatigante pour l’œil.
-			</p>
+			<h3 class="animate-text">Télescopes<span class="hidden-cite"></span></h3>
+			<p>Utilise un miroir sphérique concave comme objectif (système catoptrique).<span class="hidden-cite"></span></p>
 
 			<div class="visual-element">
 				<img src="Telescope.png" alt="Schéma du télescope">
 			</div>
-			<p class="visual-description">Figure 3 : L'oculaire observe l'image après réflexion sur un miroir secondaire.</p>
+			<p class="visual-description">Figure 3 : L'oculaire observe l'image après réflexion sur un miroir secondaire.<span
+					class="hidden-cite"></span></p>
 
 			<ul>
-				<li>Ce télescope est constitué d’un miroir sphérique comme objectif (au lieu d’une lentille convergente). On
-					parle alors de système catoptrique.</li>
-				<li>Comme la lunette astronomique, le système est réglé pour être afocal : le foyer image du miroir est confondu
-					avec le foyer objet de l’oculaire pour que l’image soit rejetée à l’infini.</li>
-				<li>Dans un télescope, un miroir concave collecte la lumière et forme une image réelle. Cette image est ensuite
-					observée grâce à un oculaire après réflexion
-					sur un miroir secondaire.</li>
-				<li>Il existe plusieurs télescopes différents selon la position de l’oculaire et des miroirs secondaires :
-					télescopes de Newton, de Cassegrain ou grégorien.</li>
-				<li>Le miroir a des avantages physiques par rapport aux lentilles : il permet de garantir la qualité des images
-					(il n’y a quasiment pas d’aberration chromatique que l’on retrouverait avec le verre des lentilles). De plus,
-					il est bien plus facile de construire des miroirs de très
-					grands diamètres plutôt que des lentilles. Un grand diamètre permet
-					de collecter plus de lumière et surtout d’améliorer la résolution angulaire limite du télescope en diminuant
-					l’impact de la diffraction (la tache d’Airy est réduite).</li>
+				<li>Réglé pour être afocal : rejet de l'image à l'infini.<span class="hidden-cite"></span></li>
+				<li>Évite les aberrations chromatiques propres aux lentilles de verre.<span class="hidden-cite"></span></li>
+				<li>Permet de très grands diamètres : collecte plus de lumière, réduit la tache d'Airy.<span
+						class="hidden-cite"></span></li>
 			</ul>
 		</section>
 
 		<section id="comparatif">
-			<h2 class="animate-text">Tableau Comparatif</h2>
+			<h2 class="animate-text">Tableau Comparatif<span class="hidden-cite"></span></h2>
 			<table>
 				<thead>
 					<tr>
@@ -597,121 +621,44 @@
 					<tr>
 						<td>Télescope</td>
 						<td>Miroir concave</td>
-						<td>-</td>
+						<td>Convergent</td>
 						<td>Renversée</td>
 						<td>Grands diamètres</td>
 					</tr>
 				</tbody>
-			</table>
+			</table><span class="hidden-cite"></span>
 		</section>
 
 		<section id="caracteristiques">
-			<h2 class="animate-text">Caractéristiques des instruments</h2>
+			<h2 class="animate-text">Caractéristiques des instruments<span class="hidden-cite"></span></h2>
 
 			<h3 class="animate-text">Formules fondamentales</h3>
 			<ul>
 				<li><strong>Grandissement (<span class="formula">&gamma;</span>) :</strong> Rapport de taille <span
-						class="formula">&gamma; = A'B' / AB</span>.</li>
+						class="formula">&gamma; = A'B' / AB</span>.<span class="hidden-cite"></span></li>
 				<li><strong>Grossissement (G) :</strong> Rapport angulaire <span class="formula">G = &alpha;' /
-						&alpha;</span>. Pour un système afocal (comme les lunettes
-					astronomiques, de Galilée ou les télescopes), il vaut <span class="formula">G = f1 /
-						f2</span>. Relation : <span class="formula">G = 1 /
-						&gamma;</span>.</li>
-				<li><strong>Puissance (P) :</strong> <span class="formula">P = &alpha;' / AB</span>.</li>
+						&alpha;</span>.<span class="hidden-cite"></span> Pour un système afocal : <span class="formula">G = f1 /
+						f2</span>.<span class="hidden-cite"></span> Relation : <span class="formula">G = 1 / &gamma;</span>.<span
+						class="hidden-cite"></span></li>
+				<li><strong>Puissance (P) :</strong> <span class="formula">P = &alpha;' / AB</span>.<span
+						class="hidden-cite"></span></li>
 			</ul>
 
 			<h3 class="animate-text">Diaphragmes et Pupilles</h3>
 			<ul>
-				<li><strong>Diaphragme d’ouverture :</strong> Un diaphragme limite un faisceau lumineux. Le diaphragme
-					d’ouverture est celui qui limite le plus la taille du faisceau utile. Pour une lunette ou un télescope, comme
-					on cherche à
-					capter le maximum de lumière, il est préférable que ce soit la première lentille (c’est-à-dire l’objectif) ou
-					le premier miroir.</li>
-				<li><strong>Pupille d’entrée :</strong> Elle détermine le cône de lumière qui entre dans le système. Elle
-					correspond au diaphragme d'ouverture lui-même ou à son
-					conjugué dans l'espace objet. La pupille d’entrée détermine la
-					quantité de lumière collectée et la luminosité de l’image. Plus le
-					diamètre de l’objectif est grand, plus l’instrument capte de lumière et permet d’observer des objets
-					faiblement lumineux ou très éloignés.</li>
-				<li><strong>Pupille de sortie :</strong> Elle détermine le cône de lumière qui sort du système. Elle est le
-					conjugué du diaphragme d'ouverture par le
-					reste du système. Pour les instruments étudiés, cela correspond au
-					cercle oculaire situé après l'oculaire. La position de la pupille
-					de sortie est importante car l’œil doit être placé à cet endroit pour voir toute l’image. On peut calculer le
-					diamètre de la pupille de sortie avec : <span class="formula">Ds = Do / G</span> , avec Do le diamètre de
-					l’objectif.</li>
+				<li><strong>Diaphragme d’ouverture :</strong> Limite le faisceau utile (idéalement l'objectif).<span
+						class="hidden-cite"></span></li>
+				<li><strong>Pupille d’entrée :</strong> Détermine la quantité de lumière collectée (diamètre de
+					l'objectif).<span class="hidden-cite"></span></li>
+				<li><strong>Pupille de sortie :</strong> Position idéale de l'œil (cercle oculaire).<span
+						class="hidden-cite"></span> Diamètre : <span class="formula">Ds = Do / G</span>.<span
+						class="hidden-cite"></span></li>
 			</ul>
-
-			<h3 class="animate-text">Latitude de mise au point</h3>
-			<p>La latitude de mise au point est l'écart dans la position axiale pour que l'image virtuelle reste dans
-				l'intervalle de netteté de l'œil, c'est-à-dire entre son Punctum Remotum (PR) et son Punctum Proximum (PP).
-				L'observation la plus confortable (non fatigante) se fait
-				sans
-				accommoder, ce qui implique que l'image finale soit projetée à l'infini par un système afocal.</p>
-
-			<h3 class="animate-text">Profondeur de champ</h3>
-			<p>Si on remplace l'œil par un appareil photographique ou un capteur, la netteté est définie par la largeur
-				maximale acceptable de la tache image (environ la taille d'un pixel).
-				La profondeur de champ est l'écart axial possible pour l'objet tout en gardant cette image nette. Elle est
-				d'autant plus élevée que la distance focale est
-				réduite, que
-				l'objet est éloigné de l'instrument, ou que le diaphragme d'ouverture est petit (ce qui correspond à un nombre
-				d'ouverture grand).</p>
 		</section>
-
-		<section id="exercice">
-			<h2 class="animate-text">Exercice d'application</h2>
-
-			<h3 class="animate-text">❖ Énoncé (Lunette astronomique)</h3>
-			<p>La Lune est le satellite naturel de la Terre. Depuis le sol terrestre, on peut même deviner les cratères
-				présents à sa surface. En effet, cet astre peut être vu sous un angle <span class="formula">&theta; =
-					32'</span>. Mais grâce à une lunette astronomique afocale possédant un objectif de <span class="formula">900
-					mm</span> de distance focale et un oculaire de <span class="formula">10 mm</span> de distance focale, le sol
-				lunaire peut être observé en détails.</p>
-
-			<p class="question">a. Convertir l'angle &theta; en radian.</p>
-			<p class="question">b. Etablir l'expression du grossissement G de la lunette afocale en fonction des distances
-				focales de l'objectif et de l'oculaire. Calculer sa valeur.</p>
-			<p class="question">c. Calculer l'angle &theta;' sous lequel l'image de la Lune est vue à travers la lunette.</p>
-
-			<div class="solution-box">
-				<h3 class="animate-text" style="margin-top: 0;">❖ Résolution</h3>
-
-				<p><strong>a.</strong> L'angle &theta; est égal à 32'. En sachant que 1&deg; = 60', on déduit que <span
-						class="formula">&theta; = (32' &times; 1&deg;) / 60' = 32&deg; / 60</span>.</p>
-				<p>On peut alors convertir les degrés en radian avec la correspondance : &pi; radians correspondent à 180&deg;.
-					Soit :</p>
-				<p><span class="formula">&theta; = (32&deg; / 60) &times; (&pi; rad / 180&deg;) = 8,3 &times; 10<sup>-3</sup>
-						rad.</span></p>
-
-				<p><strong>b.</strong> Un schéma de la situation est réalisé :</p>
-
-				<div class="visual-element">
-					<img src="Exercice.png" alt="Schéma de la lunette afocale pour l'exercice">
-				</div>
-
-				<p>Le grossissement G d'une lentille se définit par la relation : <span class="formula">G = &theta;' /
-						&theta;</span></p>
-				<p>Les angles étant petits, on peut faire les approximations <span class="formula">tan(&theta;) &approx;
-						&theta;</span> et <span class="formula">tan(&theta;') &approx; &theta;'</span>.</p>
-				<p>On déduit du tracé : <span class="formula">&theta; &approx; tan(&theta;) = A<sub>1</sub>B<sub>1</sub> /
-						f'<sub>1</sub></span> et <span class="formula">&theta;' &approx; tan(&theta;') = A<sub>1</sub>B<sub>1</sub>
-						/ f'<sub>2</sub></span></p>
-				<p>Soit : <span class="formula">G = &theta;' / &theta; = (A<sub>1</sub>B<sub>1</sub> / f'<sub>2</sub>) /
-						(A<sub>1</sub>B<sub>1</sub> / f'<sub>1</sub>) = f'<sub>1</sub> / f'<sub>2</sub> = 900 mm / 10 mm =
-						90.</span></p>
-
-				<p><strong>c.</strong> L'angle &theta;' sous lequel l'image de la lune est vue à travers la lunette afocale est
-					:</p>
-				<p><span class="formula">&theta;' = G &times; &theta; = 90 &times; 8,3 &times; 10<sup>-3</sup> rad = 0,75
-						rad.</span></p>
-			</div>
-		</section>
-
 	</main>
 
 	<script>
-		// 1. Fonction pour découper le texte en lettres isolées
+		// 1. Fonction pour découper le texte en lettres isolées (Détection auto des .animate-text)
 		function wrapTextInLetters() {
 			const titles = document.querySelectorAll('.animate-text');
 
@@ -744,6 +691,7 @@
 		document.addEventListener("DOMContentLoaded", () => {
 			wrapTextInLetters();
 
+			// On ajoute .timeline-item à l'Observer pour animer la frise chronologique
 			const observerElements = document.querySelectorAll('section, h1.animate-text, h2.animate-text, h3.animate-text, .timeline-item');
 			const observer = new IntersectionObserver((entries) => {
 				entries.forEach(entry => {
@@ -756,6 +704,7 @@
 
 			observerElements.forEach(el => observer.observe(el));
 
+			// Force l'animation du H1 si on charge la page tout en haut
 			setTimeout(() => {
 				const mainTitle = document.querySelector('h1.animate-text');
 				if (mainTitle) mainTitle.classList.add('is-visible');
