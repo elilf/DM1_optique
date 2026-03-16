@@ -128,6 +128,8 @@
 			color: #0f172a;
 			font-size: 1.15em;
 			border-bottom: 1px solid #cbd5e1;
+			display: inline-block;
+			margin: 0.2rem 0;
 		}
 
 		/* --- En-tête (Header) --- */
@@ -196,11 +198,9 @@
 		main {
 			max-width: 900px;
 			margin: -2rem auto 4rem auto;
-			/* Remonte légèrement sur le header */
 			padding: 4rem 3rem;
 			background: rgba(255, 255, 255, 0.8);
 			backdrop-filter: blur(12px);
-			/* Effet verre sur le fond principal */
 			border-radius: 16px;
 			box-shadow: 0 10px 40px rgba(0, 0, 0, 0.02);
 			position: relative;
@@ -236,7 +236,6 @@
 
 		ul li::before {
 			content: '\25B8';
-			/* Petit triangle géométrique */
 			position: absolute;
 			left: 0;
 			top: 2px;
@@ -306,50 +305,41 @@
 			line-height: 1.7;
 		}
 
-		/* --- Styles pour les images de la frise chronologique (Cadres et mise en page spécifique) --- */
+		/* --- Styles pour les images de la frise chronologique --- */
 		.timeline-image-container {
-			display: flex;
+			display: inline-flex;
+			/* Modifié pour s'adapter à la taille max */
 			justify-content: center;
 			align-items: center;
-			margin: 1.5rem 0;
-			/* Espacement autour de l'image */
-			padding: 1.5rem;
-			/* Rembourrage intérieur */
+			margin: 1rem 0 1.5rem 0;
+			padding: 1rem;
 			border-radius: 8px;
-			/* Coins arrondis du cadre */
 			border: 1px solid #e2e8f0;
-			/* Bordure fine */
-			/* Background quadrillage millimétré (rappel scientifique) */
 			background-color: #ffffff;
 			background-image:
 				linear-gradient(var(--grid-color) 1px, transparent 1px),
 				linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
 			background-size: 15px 15px;
-			/* Quadrillage plus fin */
 			box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
-			/* Ombre douce */
 			transition: all 0.4s ease;
-			/* Transition fluide au survol */
+			max-width: 320px;
+			/* Limitation de la largeur de l'image dans la frise */
 		}
 
 		.timeline-image-container img {
 			max-width: 100%;
-			/* S'adapte à la largeur du cadre */
-			height: auto;
-			/* Conserve les proportions */
+			max-height: 200px;
+			/* Limitation de la hauteur de l'image */
+			object-fit: contain;
+			/* Conserve les proportions sans rogner */
 			border-radius: 4px;
-			/* Coins arrondis de l'image */
 			box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-			/* Ombre sous l'image */
 		}
 
 		.timeline-image-container:hover {
 			transform: translateY(-5px);
-			/* Élève le cadre au survol */
 			box-shadow: 0 8px 20px rgba(59, 130, 246, 0.1);
-			/* Ombre plus forte et bleutée */
 			border-color: var(--secondary-blue);
-			/* Change la couleur de la bordure */
 		}
 
 		.tech-badge {
@@ -379,7 +369,6 @@
 			padding: 3rem 2rem;
 			border-radius: 12px;
 			border: 1px solid #e2e8f0;
-			/* Background quadrillage millimétré */
 			background-color: #ffffff;
 			background-image:
 				linear-gradient(var(--grid-color) 1px, transparent 1px),
@@ -399,10 +388,8 @@
 			transition: all 0.5s ease;
 		}
 
-		/* Effet "Aberration Chromatique" au survol des images */
 		.visual-element:hover img {
 			transform: translateY(-5px) scale(1.02);
-			/* Décalage rouge à gauche, bleu à droite, imitant un prisme */
 			box-shadow: -4px 5px 15px rgba(239, 68, 68, 0.15), 4px 5px 15px rgba(59, 130, 246, 0.15), 0 10px 20px rgba(0, 0, 0, 0.05);
 		}
 
@@ -410,7 +397,6 @@
 			text-align: center;
 			color: #64748b;
 			font-family: 'Lora', serif;
-			/* Font scientifique pour les légendes */
 			font-style: italic;
 			font-size: 0.95rem;
 			margin-top: -1.5rem;
@@ -426,7 +412,6 @@
 			border-radius: 8px;
 			overflow: hidden;
 			box-shadow: 0 0 0 1px #e2e8f0;
-			/* Bordure fine */
 		}
 
 		thead {
@@ -451,6 +436,28 @@
 
 		tbody tr:hover {
 			background-color: var(--light-blue);
+		}
+
+		/* --- Design spécifique pour l'Exercice --- */
+		.question {
+			font-weight: 600;
+			color: var(--primary-blue);
+			margin-top: 1.5rem;
+			margin-bottom: 0.5rem;
+		}
+
+		.solution-box {
+			background-color: #f8fafc;
+			border-left: 4px solid #10b981;
+			padding: 2rem;
+			border-radius: 0 8px 8px 0;
+			margin-top: 3rem;
+			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+		}
+
+		.solution-box h3 {
+			color: #10b981;
+			margin-top: 0;
 		}
 	</style>
 </head>
@@ -637,7 +644,8 @@
 				<li><strong>Grandissement (<span class="formula">&gamma;</span>) :</strong> Rapport de taille <span
 						class="formula">&gamma; = A'B' / AB</span>.<span class="hidden-cite"></span></li>
 				<li><strong>Grossissement (G) :</strong> Rapport angulaire <span class="formula">G = &alpha;' /
-						&alpha;</span>.<span class="hidden-cite"></span> Pour un système afocal : <span class="formula">G = f1 /
+						&alpha;</span>.<span class="hidden-cite"></span> Pour un système afocal (comme les lunettes astronomiques,
+					de Galilée ou les télescopes), il vaut <span class="formula">G = f1 /
 						f2</span>.<span class="hidden-cite"></span> Relation : <span class="formula">G = 1 / &gamma;</span>.<span
 						class="hidden-cite"></span></li>
 				<li><strong>Puissance (P) :</strong> <span class="formula">P = &alpha;' / AB</span>.<span
@@ -646,19 +654,95 @@
 
 			<h3 class="animate-text">Diaphragmes et Pupilles</h3>
 			<ul>
-				<li><strong>Diaphragme d’ouverture :</strong> Limite le faisceau utile (idéalement l'objectif).<span
-						class="hidden-cite"></span></li>
-				<li><strong>Pupille d’entrée :</strong> Détermine la quantité de lumière collectée (diamètre de
-					l'objectif).<span class="hidden-cite"></span></li>
-				<li><strong>Pupille de sortie :</strong> Position idéale de l'œil (cercle oculaire).<span
-						class="hidden-cite"></span> Diamètre : <span class="formula">Ds = Do / G</span>.<span
-						class="hidden-cite"></span></li>
+				<li><strong>Diaphragme d’ouverture :</strong> Un diaphragme limite un faisceau lumineux. Le diaphragme
+					d’ouverture est celui qui limite le plus la taille du faisceau utile.<span class="hidden-cite"></span> Pour
+					une lunette ou un télescope, comme on cherche à capter le maximum de lumière, il est préférable que ce soit la
+					première lentille (c’est-à-dire l’objectif) ou le premier miroir.<span class="hidden-cite"></span></li>
+				<li><strong>Pupille d’entrée :</strong> Elle détermine le cône de lumière qui entre dans le système.<span
+						class="hidden-cite"></span> Elle correspond au diaphragme d'ouverture lui-même ou à son conjugué dans
+					l'espace objet.<span class="hidden-cite"></span> La pupille d’entrée détermine la quantité de lumière
+					collectée et la luminosité de l’image.<span class="hidden-cite"></span> Plus le diamètre de l’objectif est
+					grand, plus l’instrument capte de lumière et permet d’observer des objets faiblement lumineux ou très
+					éloignés.<span class="hidden-cite"></span></li>
+				<li><strong>Pupille de sortie :</strong> Elle détermine le cône de lumière qui sort du système.<span
+						class="hidden-cite"></span> Elle est le conjugué du diaphragme d'ouverture par le reste du système.<span
+						class="hidden-cite"></span> Pour les instruments étudiés, cela correspond au cercle oculaire situé après
+					l'oculaire.<span class="hidden-cite"></span> La position de la pupille de sortie est importante car l’œil doit
+					être placé à cet endroit pour voir toute l’image.<span class="hidden-cite"></span> On peut calculer le
+					diamètre de la pupille de sortie avec : <span class="formula">Ds = Do / G</span> , avec Do le diamètre de
+					l’objectif.<span class="hidden-cite"></span></li>
 			</ul>
+
+			<h3 class="animate-text">Latitude de mise au point<span class="hidden-cite"></span></h3>
+			<p>La latitude de mise au point est l'écart dans la position axiale pour que l'image virtuelle reste dans
+				l'intervalle de netteté de l'œil, c'est-à-dire entre son Punctum Remotum (PR) et son Punctum Proximum (PP).<span
+					class="hidden-cite"></span> L'observation la plus confortable (non fatigante) se fait sans
+				accommoder, ce qui implique que l'image finale soit projetée à l'infini par un système afocal.<span
+					class="hidden-cite"></span></p>
+
+			<h3 class="animate-text">Profondeur de champ<span class="hidden-cite"></span></h3>
+			<p>Si on remplace l'œil par un appareil photographique ou un capteur, la netteté est définie par la largeur
+				maximale acceptable de la tache image (environ la taille d'un pixel).<span class="hidden-cite"></span>
+				La profondeur de champ est l'écart axial possible pour l'objet tout en gardant cette image nette.<span
+					class="hidden-cite"></span> Elle est d'autant plus élevée que la distance focale est réduite, que
+				l'objet est éloigné de l'instrument, ou que le diaphragme d'ouverture est petit (ce qui correspond à un nombre
+				d'ouverture grand).<span class="hidden-cite"></span></p>
+
 		</section>
+
+		<section id="exercice">
+			<h2 class="animate-text">Exercice d'application<span class="hidden-cite"></span></h2>
+
+			<h3 class="animate-text">❖ Énoncé (Lunette astronomique)</h3>
+			<p>La Lune est le satellite naturel de la Terre. Depuis le sol terrestre, on peut même deviner les cratères
+				présents à sa surface. En effet, cet astre peut être vu sous un angle <span class="formula">&theta; =
+					32'</span>. Mais grâce à une lunette astronomique afocale possédant un objectif de <span class="formula">900
+					mm</span> de distance focale et un oculaire de <span class="formula">10 mm</span> de distance focale, le sol
+				lunaire peut être observé en détails.</p>
+
+			<p class="question">a. Convertir l'angle &theta; en radian.</p>
+			<p class="question">b. Etablir l'expression du grossissement G de la lunette afocale en fonction des distances
+				focales de l'objectif et de l'oculaire. Calculer sa valeur.</p>
+			<p class="question">c. Calculer l'angle &theta;' sous lequel l'image de la Lune est vue à travers la lunette.</p>
+
+			<div class="solution-box">
+				<h3 class="animate-text" style="margin-top: 0;">❖ Résolution</h3>
+
+				<p><strong>a.</strong> L'angle &theta; est égal à 32'. En sachant que 1&deg; = 60', on déduit que <span
+						class="formula">&theta; = (32' &times; 1&deg;) / 60' = 32&deg; / 60</span>.</p>
+				<p>On peut alors convertir les degrés en radian avec la correspondance : &pi; radians correspondent à 180&deg;.
+					Soit :</p>
+				<p><span class="formula">&theta; = (32&deg; / 60) &times; (&pi; rad / 180&deg;) = 8,3 &times; 10<sup>-3</sup>
+						rad.</span></p>
+
+				<p><strong>b.</strong> Un schéma de la situation est réalisé :</p>
+
+				<div class="visual-element">
+					<img src="schema_exercice.png" alt="Schéma de la lunette afocale pour l'exercice">
+				</div>
+
+				<p>Le grossissement G d'une lentille se définit par la relation : <span class="formula">G = &theta;' /
+						&theta;</span></p>
+				<p>Les angles étant petits, on peut faire les approximations <span class="formula">tan(&theta;) &approx;
+						&theta;</span> et <span class="formula">tan(&theta;') &approx; &theta;'</span>.</p>
+				<p>On déduit du tracé : <span class="formula">&theta; &approx; tan(&theta;) = A<sub>1</sub>B<sub>1</sub> /
+						f'<sub>1</sub></span> et <span class="formula">&theta;' &approx; tan(&theta;') = A<sub>1</sub>B<sub>1</sub>
+						/ f'<sub>2</sub></span></p>
+				<p>Soit : <span class="formula">G = &theta;' / &theta; = (A<sub>1</sub>B<sub>1</sub> / f'<sub>2</sub>) /
+						(A<sub>1</sub>B<sub>1</sub> / f'<sub>1</sub>) = f'<sub>1</sub> / f'<sub>2</sub> = 900 mm / 10 mm =
+						90.</span></p>
+
+				<p><strong>c.</strong> L'angle &theta;' sous lequel l'image de la lune est vue à travers la lunette afocale est
+					:</p>
+				<p><span class="formula">&theta;' = G &times; &theta; = 90 &times; 8,3 &times; 10<sup>-3</sup> rad = 0,75
+						rad.</span></p>
+			</div>
+		</section>
+
 	</main>
 
 	<script>
-		// 1. Fonction pour découper le texte en lettres isolées (Détection auto des .animate-text)
+		// 1. Fonction pour découper le texte en lettres isolées
 		function wrapTextInLetters() {
 			const titles = document.querySelectorAll('.animate-text');
 
@@ -691,7 +775,6 @@
 		document.addEventListener("DOMContentLoaded", () => {
 			wrapTextInLetters();
 
-			// On ajoute .timeline-item à l'Observer pour animer la frise chronologique
 			const observerElements = document.querySelectorAll('section, h1.animate-text, h2.animate-text, h3.animate-text, .timeline-item');
 			const observer = new IntersectionObserver((entries) => {
 				entries.forEach(entry => {
@@ -704,7 +787,6 @@
 
 			observerElements.forEach(el => observer.observe(el));
 
-			// Force l'animation du H1 si on charge la page tout en haut
 			setTimeout(() => {
 				const mainTitle = document.querySelector('h1.animate-text');
 				if (mainTitle) mainTitle.classList.add('is-visible');
