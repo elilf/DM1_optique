@@ -57,10 +57,6 @@
 			background: #94a3b8;
 		}
 
-		.hidden-cite {
-			display: none !important;
-		}
-
 		/* --- Canvas pour les particules "Antigravity" --- */
 		#particleCanvas {
 			position: absolute;
@@ -467,7 +463,7 @@
 	<header>
 		<canvas id="particleCanvas"></canvas>
 		<div class="header-content">
-			<h1 class="animate-text">Optique : Lunettes & Télescopes<span class="hidden-cite"></span></h1>
+			<h1 class="animate-text">Optique : Lunettes & Télescopes</h1>
 			<p>Une exploration lumineuse des instruments célestes.</p>
 		</div>
 	</header>
@@ -543,63 +539,74 @@
 		</section>
 
 		<section id="introduction">
-			<h2 class="animate-text">Utilité et Fonctionnement<span class="hidden-cite"></span></h2>
+			<h2 class="animate-text">Utilité et Fonctionnement</h2>
 
-			<h3 class="animate-text">Lunette astronomique<span class="hidden-cite"></span></h3>
-			<p>La lunette astronomique augmente le diamètre et la luminosité apparente des objets situés à l’infini (étoiles,
-				planètes).<span class="hidden-cite"></span> Constituée de deux lentilles convergentes : un objectif de grande
-				distance focale (collecte) et un oculaire de courte focale (grossit).<span class="hidden-cite"></span></p>
+			<h3 class="animate-text">Lunette astronomique</h3>
+
+			<p>La lunette astronomique est un instrument optique utilisé pour augmenter le diamètre apparent et la luminosité
+				apparente des objets situés à l’infini (comme les objets célestes, telles que les étoiles, planètes ou
+				galaxies).</p>
+
+			<p>Cette lunette est constituée de deux lentilles convergentes : un objectif de grande distance focale (qui
+				collecte
+				la lumière qui provient de l'objet observé) et d'un oculaire de courte distance focale (qui permet de grossir
+				l'image formée par l'objectif).</p>
 
 			<div class="visual-element">
 				<img src="Lunette_astronomique.png" alt="Schéma de la lunette astronomique">
 			</div>
 			<p class="visual-description">Figure 1 : Foyer objet de l'oculaire confondu avec le foyer image de
-				l'objectif.<span class="hidden-cite"></span></p>
+				l'objectif.</p>
 
-			<ul>
-				<li>L'image se forme dans le plan focal image pour un objet à l'infini.<span class="hidden-cite"></span></li>
-				<li>L’image finale est rejetée à l’infini, observation sans fatigue.<span class="hidden-cite"></span></li>
-				<li>L’image étant renversée, on peut ajouter un redresseur (lunette terrestre).<span class="hidden-cite"></span>
-				</li>
-			</ul>
+			<p>Lorsque l'objet observé est situé à l'infini, l'image se forme dans le plan focal image . La position de
+				l'oculaire permet que le foyer objet soit confondu avec le foyer
+				image
+				de l'objectif, ainsi l'image finale est située à l'infini.</p>
+
+			<p>L'image étant renversée, on peut utiliser un système de miroir ou une lentille intermédiaire pour redresser
+				l'image. On obtient alors une lunette terrestre.</p>
 
 			<h3 class="animate-text">Lunette de Galilée<span class="hidden-cite"></span></h3>
-			<p>Développée par Galileo Galilei, elle augmente le diamètre apparent des objets à l'infini tout en fournissant
-				une image droite.<span class="hidden-cite"></span></p>
+
+			<p>La lunette de Galilée (développée par Galileo Galilei) est une lunette terrestre utilisée, tout comme la
+				lunette
+				astronomique, pour augmenter le diamètre apparent des objets situés à l’infini et la clarté des objets sans
+				diamètre
+				apparent.</p>
+
+			<p>Cette lunette est constituée d’un objectif convergent de grande distance focale et d’un oculaire divergent de
+				courte
+				distance focale.</p>
 
 			<div class="visual-element">
 				<img src="Lunette_Galilee.png" alt="Schéma de la lunette de Galilée">
 			</div>
-			<p class="visual-description">Figure 2 : Objectif convergent et oculaire divergent.<span
-					class="hidden-cite"></span>
+			<p class="visual-description">Figure 2 : Objectif convergent et oculaire divergent.</p>
+
+			<p>L’objectif convergent permet de donner à un objet situé à l’infini une image réelle intermédiaire tandis que
+				l’oculaire divergent permet la formation d’une image virtuelle située à l’infini. Le système est alors afocal.
 			</p>
 
-			<ul>
-				<li>Objectif convergent (image réelle) et oculaire divergent (image virtuelle).<span class="hidden-cite"></span>
-				</li>
-				<li>Le système est afocal.<span class="hidden-cite"></span></li>
-				<li>L'image est droite mais le champ de vision est plus limité.<span class="hidden-cite"></span></li>
-			</ul>
+			<p>Contrairement à la lunette astronomique, l’image est droite et vue sous un angle plus grand que l’objet.
+				Cependant le champ de vision est plus limité.</p>
 
-			<h3 class="animate-text">Télescopes<span class="hidden-cite"></span></h3>
-			<p>Utilise un miroir sphérique concave comme objectif (système catoptrique).<span class="hidden-cite"></span></p>
+			<h3 class="animate-text">Télescopes</h3>
+			<p>Utilise un miroir sphérique concave comme objectif (système catoptrique).</p>
 
 			<div class="visual-element">
 				<img src="Telescope.png" alt="Schéma du télescope">
 			</div>
-			<p class="visual-description">Figure 3 : L'oculaire observe l'image après réflexion sur un miroir secondaire.<span
-					class="hidden-cite"></span></p>
+			<p class="visual-description">Figure 3 : L'oculaire observe l'image après réflexion sur un miroir secondaire.</p>
 
 			<ul>
-				<li>Réglé pour être afocal : rejet de l'image à l'infini.<span class="hidden-cite"></span></li>
-				<li>Évite les aberrations chromatiques propres aux lentilles de verre.<span class="hidden-cite"></span></li>
-				<li>Permet de très grands diamètres : collecte plus de lumière, réduit la tache d'Airy.<span
-						class="hidden-cite"></span></li>
+				<li>Réglé pour être afocal : rejet de l'image à l'infini.</li>
+				<li>Évite les aberrations chromatiques propres aux lentilles de verre.</li>
+				<li>Permet de très grands diamètres : collecte plus de lumière, réduit la tache d'Airy.</li>
 			</ul>
 		</section>
 
 		<section id="comparatif">
-			<h2 class="animate-text">Tableau Comparatif<span class="hidden-cite"></span></h2>
+			<h2 class="animate-text">Tableau Comparatif</h2>
 			<table>
 				<thead>
 					<tr>
@@ -633,65 +640,62 @@
 						<td>Grands diamètres</td>
 					</tr>
 				</tbody>
-			</table><span class="hidden-cite"></span>
+			</table>
 		</section>
 
 		<section id="caracteristiques">
-			<h2 class="animate-text">Caractéristiques des instruments<span class="hidden-cite"></span></h2>
+			<h2 class="animate-text">Caractéristiques des instruments</h2>
 
 			<h3 class="animate-text">Formules fondamentales</h3>
 			<ul>
 				<li><strong>Grandissement (<span class="formula">&gamma;</span>) :</strong> Rapport de taille <span
-						class="formula">&gamma; = A'B' / AB</span>.<span class="hidden-cite"></span></li>
+						class="formula">&gamma; = A'B' / AB</span>.</li>
 				<li><strong>Grossissement (G) :</strong> Rapport angulaire <span class="formula">G = &alpha;' /
-						&alpha;</span>.<span class="hidden-cite"></span> Pour un système afocal (comme les lunettes astronomiques,
+						&alpha;</span>. Pour un système afocal (comme les lunettes astronomiques,
 					de Galilée ou les télescopes), il vaut <span class="formula">G = f1 /
-						f2</span>.<span class="hidden-cite"></span> Relation : <span class="formula">G = 1 / &gamma;</span>.<span
-						class="hidden-cite"></span></li>
-				<li><strong>Puissance (P) :</strong> <span class="formula">P = &alpha;' / AB</span>.<span
-						class="hidden-cite"></span></li>
+						f2</span>. Relation : <span class="formula">G = 1 / &gamma;</span>.</li>
+				<li><strong>Puissance (P) :</strong> <span class="formula">P = &alpha;' / AB</span>.</li>
 			</ul>
 
 			<h3 class="animate-text">Diaphragmes et Pupilles</h3>
 			<ul>
 				<li><strong>Diaphragme d’ouverture :</strong> Un diaphragme limite un faisceau lumineux. Le diaphragme
-					d’ouverture est celui qui limite le plus la taille du faisceau utile.<span class="hidden-cite"></span> Pour
+					d'ouverture est celui qui limite le plus la taille du faisceau utile. Pour
 					une lunette ou un télescope, comme on cherche à capter le maximum de lumière, il est préférable que ce soit la
-					première lentille (c’est-à-dire l’objectif) ou le premier miroir.<span class="hidden-cite"></span></li>
-				<li><strong>Pupille d’entrée :</strong> Elle détermine le cône de lumière qui entre dans le système.<span
-						class="hidden-cite"></span> Elle correspond au diaphragme d'ouverture lui-même ou à son conjugué dans
-					l'espace objet.<span class="hidden-cite"></span> La pupille d’entrée détermine la quantité de lumière
-					collectée et la luminosité de l’image.<span class="hidden-cite"></span> Plus le diamètre de l’objectif est
-					grand, plus l’instrument capte de lumière et permet d’observer des objets faiblement lumineux ou très
-					éloignés.<span class="hidden-cite"></span></li>
-				<li><strong>Pupille de sortie :</strong> Elle détermine le cône de lumière qui sort du système.<span
-						class="hidden-cite"></span> Elle est le conjugué du diaphragme d'ouverture par le reste du système.<span
-						class="hidden-cite"></span> Pour les instruments étudiés, cela correspond au cercle oculaire situé après
-					l'oculaire.<span class="hidden-cite"></span> La position de la pupille de sortie est importante car l’œil doit
-					être placé à cet endroit pour voir toute l’image.<span class="hidden-cite"></span> On peut calculer le
+					première lentille (c'est-à-dire l'objectif) ou le premier miroir.</li>
+				<li><strong>Pupille d'entrée :</strong> Elle détermine le cône de lumière qui entre dans le système.
+					Elle correspond au diaphragme d'ouverture lui-même ou à son conjugué dans
+					l'espace objet. La pupille d'entrée détermine la quantité de lumière
+					collectée et la luminosité de l'image. Plus le diamètre de l'objectif est
+					grand, plus l'instrument capte de lumière et permet d'observer des objets faiblement lumineux ou très
+					éloignés.</li>
+				<li><strong>Pupille de sortie :</strong> Elle détermine le cône de lumière qui sort du système.
+					Elle est le conjugué du diaphragme d'ouverture par le reste du système.
+					Pour les instruments étudiés, cela correspond au cercle oculaire situé après
+					l'oculaire. La position de la pupille de sortie est importante car l'œil doit
+					être placé à cet endroit pour voir toute l'image. On peut calculer le
 					diamètre de la pupille de sortie avec : <span class="formula">Ds = Do / G</span> , avec Do le diamètre de
-					l’objectif.<span class="hidden-cite"></span></li>
+					l'objectif.</li>
 			</ul>
 
-			<h3 class="animate-text">Latitude de mise au point<span class="hidden-cite"></span></h3>
+			<h3 class="animate-text">Latitude de mise au point</h3>
 			<p>La latitude de mise au point est l'écart dans la position axiale pour que l'image virtuelle reste dans
-				l'intervalle de netteté de l'œil, c'est-à-dire entre son Punctum Remotum (PR) et son Punctum Proximum (PP).<span
-					class="hidden-cite"></span> L'observation la plus confortable (non fatigante) se fait sans
-				accommoder, ce qui implique que l'image finale soit projetée à l'infini par un système afocal.<span
-					class="hidden-cite"></span></p>
+				l'intervalle de netteté de l'œil, c'est-à-dire entre son Punctum Remotum (PR) et son Punctum Proximum (PP).
+				L'observation la plus confortable (non fatigante) se fait sans
+				accommoder, ce qui implique que l'image finale soit projetée à l'infini par un système afocal.</p>
 
-			<h3 class="animate-text">Profondeur de champ<span class="hidden-cite"></span></h3>
+			<h3 class="animate-text">Profondeur de champ</h3>
 			<p>Si on remplace l'œil par un appareil photographique ou un capteur, la netteté est définie par la largeur
-				maximale acceptable de la tache image (environ la taille d'un pixel).<span class="hidden-cite"></span>
-				La profondeur de champ est l'écart axial possible pour l'objet tout en gardant cette image nette.<span
-					class="hidden-cite"></span> Elle est d'autant plus élevée que la distance focale est réduite, que
+				maximale acceptable de la tache image (environ la taille d'un pixel).
+				La profondeur de champ est l'écart axial possible pour l'objet tout en gardant cette image nette. Elle est
+				d'autant plus élevée que la distance focale est réduite, que
 				l'objet est éloigné de l'instrument, ou que le diaphragme d'ouverture est petit (ce qui correspond à un nombre
-				d'ouverture grand).<span class="hidden-cite"></span></p>
+				d'ouverture grand).</p>
 
 		</section>
 
 		<section id="exercice">
-			<h2 class="animate-text">Exercice d'application<span class="hidden-cite"></span></h2>
+			<h2 class="animate-text">Exercice d'application</h2>
 
 			<h3 class="animate-text">❖ Énoncé (Lunette astronomique)</h3>
 			<p>La Lune est le satellite naturel de la Terre. Depuis le sol terrestre, on peut même deviner les cratères
